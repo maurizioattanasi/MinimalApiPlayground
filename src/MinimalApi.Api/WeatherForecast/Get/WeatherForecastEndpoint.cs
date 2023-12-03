@@ -18,6 +18,8 @@ public class WeatherForecastEndpoint : Endpoint<WeatherForecastRequest, IEnumera
 
     public override async Task HandleAsync(WeatherForecastRequest req, CancellationToken ct)
     {
+        Logger.LogInformation($"Retrieving weather forecasts for {req.Days} days");
+
         var forecasts = Enumerable.Range(1, req.Days).Select(index =>
             new WeatherForecast
             (
